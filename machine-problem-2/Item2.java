@@ -1,5 +1,8 @@
 import java.util.*;
-//harshad-number
+/* harshad-number
+A number is Harshad if it is divisible by the sum of its digits.
+For example, 18 is a Harshad Number because 18 ÷ (1+8) = 2
+*/
 
 public class Item2{
     public static void main(String[] args){
@@ -12,6 +15,7 @@ public class Item2{
             sum += temp%10;
             temp /= 10;
         }
+
         System.out.println(n % sum == 0 ? "Harshad!" : "NOT Harshad.");
     }
 
