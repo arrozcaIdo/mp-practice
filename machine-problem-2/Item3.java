@@ -22,6 +22,7 @@ public class Item3 {
             sum += fact(temp%10);
             temp /= 10;
         }
+
         System.out.println(sum == n ? "STRONG NUMBER!" : "not a strong number.");
     }
 }
