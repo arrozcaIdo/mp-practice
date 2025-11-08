@@ -16,5 +16,4 @@ public class Item1{
 
         System.out.println(intNumber == intSum ? "This is a PERFECT number!" : "This is NOT a perfect number.");
     }
-
 }
