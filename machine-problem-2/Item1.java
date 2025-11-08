@@ -14,6 +14,6 @@ public class Item1{
         for(int i = 1; i <= intNumber/2; i++)
             if(intNumber % i == 0) intSum += i;
 
-        System.out.println(intNumber == intSum ? "This is a PERFECT number!" : "This is NOT a perfect number.");
+        System.out.println(intNumber == intSum ? "PERFECT number!" : "not a perfect number.");
     }
 }
