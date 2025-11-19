@@ -3,10 +3,10 @@ import java.util.*;
 public class mp3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int choice;
+        int intChoice;
 
         do {
-            System.out.println("---- String Manipulation Toolkit ----");
+            System.out.println("----String Manipulation Toolkit----");
             System.out.println("1. Reverse");
             System.out.println("2. Palindrome");
             System.out.println("3. Anagram");
@@ -20,11 +20,26 @@ public class mp3 {
             System.out.println("11. Exit");
 
             System.out.print("Choice: ");
-            choice = sc.nextInt();
+            intChoice = sc.nextInt();
             sc.nextLine();
 
+            switch (intChoice){
+                case 1: System.out.print("Enter string: ");
+                System.out.println("Reversed: ");
+                break;
 
+                case 2: System.out.print("Enter string: ");
+                // teka lng
+                case 3: System.out.print("Enter first string: ");
+                String string1 = sc.nextLine();
+                System.out.print("Enter second string: ");
+                String string2 = sc.nextLine();
+                // kulang pa
 
-        } while (choice != 11);
+                default:
+                    System.out.println("Invalid! Please try again.");
+            }
+
+        } while (intChoice != 11);
     }
 }
