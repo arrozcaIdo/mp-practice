@@ -29,17 +29,56 @@ public class mp3 {
                 break;
 
                 case 2: System.out.print("Enter string: ");
-                // teka lng
+                break;
+
+
                 case 3: System.out.print("Enter first string: ");
                 String string1 = sc.nextLine();
                 System.out.print("Enter second string: ");
                 String string2 = sc.nextLine();
-                // kulang pa
+                break;
+
+                case 4: System.out.print("Enter string: ");
+                System.out.println("Word count: ");
+                break;
+
+                case 5: System.out.print("Enter string: ");
+                System.out.println("Character count: ");
+                break;
+
+                case 6: System.out.print("Enter text: ");
+                String stringText = sc.nextLine();
+                System.out.print("Enter substring: ");
+                String stringSub = sc.nextLine();
+
+
+                break;
+
+                case 7: System.out.print("Enter string: ");
+                System.out.println("Lowercase: ");
+                break;
+
+                case 8: System.out.print("Enter string: ");
+                System.out.println("Uppercase: ");
+                break;
+
+                case 9: System.out.print("Enter string: ");
+                System.out.println("Without vowels: ");
+                break;
+
+                case 10: System.out.print("Enter string: ");
+                System.out.println("Without consonants: ");
+                break;
+
+                case 11: System.out.println("----Thank you for using the String Manipulation Toolkit!----");
+                break;
 
                 default:
                     System.out.println("Invalid! Please try again.");
             }
 
         } while (intChoice != 11);
+
+        sc.close();
     }
 }
