@@ -11,14 +11,7 @@ abstract class mToolkit {
     public abstract void process(); // ABSTRACT method (Abstraction)
 }
 
-class Toolkit {
-    private String input;   // private = Encapsulation
-
-    public Toolkit(String input) {
-        this.input = input;
-    }
-
-    public String getInput() { return input; }
+record Toolkit(String input) {
 
     public String reverse() {
 
@@ -26,8 +19,8 @@ class Toolkit {
     }
 
     public boolean isPalindrome() {
-        String cleaned = input.replaceAll("\\s+", "").toLowerCase();
-        return cleaned.equals(new StringBuilder(cleaned).reverse().toString());
+        String norm = input.replaceAll("\\s+", "").toLowerCase();
+        return norm.equals(new StringBuilder(norm).reverse().toString());
     }
 
     public static boolean isAnagram(String a, String b) {
@@ -56,10 +49,21 @@ class Toolkit {
         return pos;
     }
 
-    public String toLower() { return input.toLowerCase(); }
-    public String toUpper() { return input.toUpperCase(); }
-    public String removeVowels() { return input.replaceAll("(?i)[aeiou]", ""); }
-    public String removeConsonants() { return input.replaceAll("(?i)[bcdfghjklmnpqrstvwxyz]", ""); }
+    public String toLower() {
+        return input.toLowerCase();
+    }
+
+    public String toUpper() {
+        return input.toUpperCase();
+    }
+
+    public String removeVowels() {
+        return input.replaceAll("(?i)[aeiou]", "");
+    }
+
+    public String removeConsonants() {
+        return input.replaceAll("(?i)[bcdfghjklmnpqrstvwxyz]", "");
+    }
 }
 
 // 1. Reverse
@@ -74,15 +78,15 @@ class ReverseTool extends mToolkit {
 class PalindromeTool extends mToolkit {
     public PalindromeTool(String input) { super(input); }
     public void process() {
-        String cleaned = input.replaceAll("\\s+", "").toLowerCase();
-        boolean isPal = cleaned.equals(new StringBuilder(cleaned).reverse().toString());
+        String norm = input.replaceAll("\\s+", "").toLowerCase();
+        boolean isPal = norm.contentEquals(new StringBuilder(norm).reverse());
         System.out.println(isPal ? "Palindrome" : "Not a palindrome");
     }
 }
 
 // 3. Anagram
 class AnagramTool extends mToolkit {
-    private String second;
+    private final String second;
     public AnagramTool(String input, String second) {
         super(input);
         this.second = second;
@@ -111,7 +115,7 @@ class CharCountTool extends mToolkit {
 
 // 6. Substring Finder
 class SubstringTool extends mToolkit {
-    private String sub;
+    private final String sub;
     public SubstringTool(String input, String sub) {
         super(input);
         this.sub = sub;
