@@ -18,7 +18,7 @@ class Toolkit {
         this.input = input;
     }
 
-    public String getinput() { return input; }
+    public String getInput() { return input; }
 
     public String reverse() {
 
