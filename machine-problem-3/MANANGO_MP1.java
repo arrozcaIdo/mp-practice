@@ -14,13 +14,12 @@ abstract class mToolkit {
 record Toolkit(String input) { // record for efficiency
 
     public String reverse() {
-
         return new StringBuilder(input).reverse().toString();
     }
 
     public boolean isPalindrome() {
         String norm = input.replaceAll("\\s+", "").toLowerCase(); // cleaning/normalizing input
-        return norm.equals(new StringBuilder(norm).reverse().toString()); //sbuilder for
+        return norm.equals(new StringBuilder(norm).reverse().toString());
     }
 
     public static boolean isAnagram(String a, String b) {
@@ -163,9 +162,9 @@ class ConsonantTool extends mToolkit {
     }
 }
 
-// main
-public class mp3 {
 
+// main
+public class MANANGO_MP1 {
     public static int countSentences(String input) {
         int count = 0;
         for (char c : input.toCharArray()) {
@@ -192,7 +191,7 @@ public class mp3 {
 
         int choice;
 
-        // Validate user choice
+       // error handler
         while (true) {
             System.out.print("\nEnter your choice (1–10): ");
             if (sc.hasNextInt()) {
