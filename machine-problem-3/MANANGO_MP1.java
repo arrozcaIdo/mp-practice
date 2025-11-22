@@ -69,7 +69,8 @@ record Toolkit(String input) { // record for efficiency
 class ReverseTool extends mToolkit {
     public ReverseTool(String input) { super(input); }
     public void process() {
-        System.out.println("Reversed: " + new StringBuilder(input).reverse());
+        Toolkit toolkit = new Toolkit(input);
+        System.out.println("Reversed: " + toolkit.reverse());
     }
 }
 
@@ -77,8 +78,8 @@ class ReverseTool extends mToolkit {
 class PalindromeTool extends mToolkit {
     public PalindromeTool(String input) { super(input); }
     public void process() {
-        String norm = input.replaceAll("\\s+", "").toLowerCase();
-        boolean isPal = norm.contentEquals(new StringBuilder(norm).reverse());
+        Toolkit toolkit = new Toolkit(input);
+        boolean isPal = toolkit.isPalindrome();
         System.out.println(isPal ? "Palindrome" : "Not a palindrome");
     }
 }
@@ -100,7 +101,8 @@ class AnagramTool extends mToolkit {
 class WordCountTool extends mToolkit {
     public WordCountTool(String input) { super(input); }
     public void process() {
-        System.out.println("Word count: " + input.trim().split("\\s+").length);
+        Toolkit toolkit = new Toolkit(input);
+        System.out.println("Word count: " + toolkit.wordCount());
     }
 }
 
@@ -108,7 +110,8 @@ class WordCountTool extends mToolkit {
 class CharCountTool extends mToolkit {
     public CharCountTool(String input) { super(input); }
     public void process() {
-        System.out.println("Character count (spaces omitted): " + input.replace(" ", "").length());
+        Toolkit toolkit = new Toolkit(input);
+        System.out.println("Character count (spaces omitted): " + toolkit.charCount());
     }
 }
 
@@ -120,13 +123,9 @@ class SubstringTool extends mToolkit {
         this.sub = sub;
     }
     public void process() {
-        List<Integer> pos = new ArrayList<>();
-        int i = input.indexOf(sub);
-        while (i != -1) {
-            pos.add(i);
-            i = input.indexOf(sub, i + 1);
-        }
-        System.out.println(pos.isEmpty() ? "Substring not found." : "Found at: " + pos);
+        Toolkit toolkit = new Toolkit(input);
+        List<Integer> positions = toolkit.findSubstring(sub);
+        System.out.println(positions.isEmpty() ? "Substring not found." : "Found at: " + positions);
     }
 }
 
@@ -134,7 +133,8 @@ class SubstringTool extends mToolkit {
 class LowerTool extends mToolkit {
     public LowerTool(String input) { super(input); }
     public void process() {
-        System.out.println(input.toLowerCase());
+        Toolkit toolkit = new Toolkit(input);
+        System.out.println(toolkit.toLower());
     }
 }
 
@@ -142,7 +142,8 @@ class LowerTool extends mToolkit {
 class UpperTool extends mToolkit {
     public UpperTool(String input) { super(input); }
     public void process() {
-        System.out.println(input.toUpperCase());
+        Toolkit toolkit = new Toolkit(input);
+        System.out.println(toolkit.toUpper());
     }
 }
 
@@ -150,7 +151,8 @@ class UpperTool extends mToolkit {
 class VowelTool extends mToolkit {
     public VowelTool(String input) { super(input); }
     public void process() {
-        System.out.println(input.replaceAll("(?i)[aeiou]", ""));
+        Toolkit toolkit = new Toolkit(input);
+        System.out.println(toolkit.removeVowels());
     }
 }
 
@@ -158,7 +160,8 @@ class VowelTool extends mToolkit {
 class ConsonantTool extends mToolkit {
     public ConsonantTool(String input) { super(input); }
     public void process() {
-        System.out.println(input.replaceAll("(?i)[bcdfghjklmnpqrstvwxyz]", ""));
+        Toolkit toolkit = new Toolkit(input);
+        System.out.println(toolkit.removeConsonants());
     }
 }
 
@@ -191,7 +194,7 @@ public class MANANGO_MP1 {
 
         int choice;
 
-       // error handler
+        // error handler
         while (true) {
             System.out.print("\nEnter your choice (1–10): ");
             if (sc.hasNextInt()) {
@@ -235,7 +238,7 @@ public class MANANGO_MP1 {
             default: return;
         }
 
-        tool.process(); // calls methods
+        tool.process();
 
         sc.close();
     }
