@@ -1,19 +1,35 @@
 import java.util.*;
 
-public class mp3 {
+// abstract base
+abstract class mToolkit {
+    protected String input;
 
-    // 1. Reverse string
-    public static String reverseString(String text) {
-        return new StringBuilder(text).reverse().toString();
+    public mToolkit(String input) {
+        this.input = input;
     }
 
-    // 2. Palindrome checker
-    public static boolean isPalindrome(String text) {
-        String cleaned = text.replaceAll("\\s+", "").toLowerCase();
+    public abstract void process(); // ABSTRACT method (Abstraction)
+}
+
+class Toolkit {
+    private String input;   // private = Encapsulation
+
+    public Toolkit(String input) {
+        this.input = input;
+    }
+
+    public String getinput() { return input; }
+
+    public String reverse() {
+
+        return new StringBuilder(input).reverse().toString();
+    }
+
+    public boolean isPalindrome() {
+        String cleaned = input.replaceAll("\\s+", "").toLowerCase();
         return cleaned.equals(new StringBuilder(cleaned).reverse().toString());
     }
 
-    // 3. Anagram checker
     public static boolean isAnagram(String a, String b) {
         char[] arr1 = a.replaceAll("\\s+", "").toLowerCase().toCharArray();
         char[] arr2 = b.replaceAll("\\s+", "").toLowerCase().toCharArray();
@@ -22,66 +38,146 @@ public class mp3 {
         return Arrays.equals(arr1, arr2);
     }
 
-    // 4. Word count
-    public static int wordCount(String text) {
-        String[] words = text.trim().split("\\s+");
-        return words.length;
+    public int wordCount() {
+        return input.trim().split("\\s+").length;
     }
 
-    // 5. Char count (no spaces)
-    public static int charCount(String text) {
-        return text.replace(" ", "").length();
+    public int charCount() {
+        return input.replace(" ", "").length();
     }
 
-    // 6. Substring finder
-    public static List<Integer> findSubstring(String text, String sub) {
-        List<Integer> positions = new ArrayList<>();
-        int index = text.indexOf(sub);
-
+    public List<Integer> findSubstring(String sub) {
+        List<Integer> pos = new ArrayList<>();
+        int index = input.indexOf(sub);
         while (index != -1) {
-            positions.add(index);
-            index = text.indexOf(sub, index + 1);
+            pos.add(index);
+            index = input.indexOf(sub, index + 1);
         }
-        return positions;
+        return pos;
     }
 
-    // 7. Lowercase
-    public static String toLower(String text) {
-        return text.toLowerCase();
-    }
+    public String toLower() { return input.toLowerCase(); }
+    public String toUpper() { return input.toUpperCase(); }
+    public String removeVowels() { return input.replaceAll("(?i)[aeiou]", ""); }
+    public String removeConsonants() { return input.replaceAll("(?i)[bcdfghjklmnpqrstvwxyz]", ""); }
+}
 
-    // 8. Uppercase
-    public static String toUpper(String text) {
-        return text.toUpperCase();
+// 1. Reverse
+class ReverseTool extends mToolkit {
+    public ReverseTool(String input) { super(input); }
+    public void process() {
+        System.out.println("Reversed: " + new StringBuilder(input).reverse());
     }
+}
 
-    // 9. Vowel remover
-    public static String removeVowels(String text) {
-        return text.replaceAll("(?i)[aeiou]", "");
+// 2. Palindrome
+class PalindromeTool extends mToolkit {
+    public PalindromeTool(String input) { super(input); }
+    public void process() {
+        String cleaned = input.replaceAll("\\s+", "").toLowerCase();
+        boolean isPal = cleaned.equals(new StringBuilder(cleaned).reverse().toString());
+        System.out.println(isPal ? "Palindrome" : "Not a palindrome");
     }
+}
 
-    // 10. Consonant remover
-    public static String removeConsonants(String text) {
-        return text.replaceAll("(?i)[bcdfghjklmnpqrstvwxyz]", "");
+// 3. Anagram
+class AnagramTool extends mToolkit {
+    private String second;
+    public AnagramTool(String input, String second) {
+        super(input);
+        this.second = second;
     }
+    public void process() {
+        boolean result = Toolkit.isAnagram(input, second);
+        System.out.println(result ? "Anagram" : "Not an anagram");
+    }
+}
 
-    // ✔ Sentence counter for 3-sentence validation
-    public static int countSentences(String text) {
+// 4. Word Count
+class WordCountTool extends mToolkit {
+    public WordCountTool(String input) { super(input); }
+    public void process() {
+        System.out.println("Word count: " + input.trim().split("\\s+").length);
+    }
+}
+
+// 5. Character Count
+class CharCountTool extends mToolkit {
+    public CharCountTool(String input) { super(input); }
+    public void process() {
+        System.out.println("Character count (no spaces): " + input.replace(" ", "").length());
+    }
+}
+
+// 6. Substring Finder
+class SubstringTool extends mToolkit {
+    private String sub;
+    public SubstringTool(String input, String sub) {
+        super(input);
+        this.sub = sub;
+    }
+    public void process() {
+        List<Integer> pos = new ArrayList<>();
+        int i = input.indexOf(sub);
+        while (i != -1) {
+            pos.add(i);
+            i = input.indexOf(sub, i + 1);
+        }
+        System.out.println(pos.isEmpty() ? "Substring not found." : "Found at: " + pos);
+    }
+}
+
+// 7. Lowercase
+class LowerTool extends mToolkit {
+    public LowerTool(String input) { super(input); }
+    public void process() {
+        System.out.println(input.toLowerCase());
+    }
+}
+
+// 8. Uppercase
+class UpperTool extends mToolkit {
+    public UpperTool(String input) { super(input); }
+    public void process() {
+        System.out.println(input.toUpperCase());
+    }
+}
+
+// 9. Vowel Remover
+class VowelTool extends mToolkit {
+    public VowelTool(String input) { super(input); }
+    public void process() {
+        System.out.println(input.replaceAll("(?i)[aeiou]", ""));
+    }
+}
+
+// 10. Consonant Remover
+class ConsonantTool extends mToolkit {
+    public ConsonantTool(String input) { super(input); }
+    public void process() {
+        System.out.println(input.replaceAll("(?i)[bcdfghjklmnpqrstvwxyz]", ""));
+    }
+}
+
+
+// ===============================================
+// MAIN PROGRAM
+// ===============================================
+public class mp3 {
+
+    public static int countSentences(String input) {
         int count = 0;
-        for (char c : text.toCharArray()) {
-            if (c == '.' || c == '!' || c == '?') {
-                count++;
-            }
+        for (char c : input.toCharArray()) {
+            if (c == '.' || c == '?' || c == '!') count++;
         }
         return count;
     }
 
-    // MAIN PROGRAM
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int choice;
 
-        System.out.println("=== STRING MANIPULATION TOOLKIT ===");
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("=== STRING MANIPULATION Toolkit ===");
         System.out.println("1. Reverse String");
         System.out.println("2. Palindrome Checker");
         System.out.println("3. Anagram Checker");
@@ -93,85 +189,56 @@ public class mp3 {
         System.out.println("9. Remove Vowels");
         System.out.println("10. Remove Consonants");
 
-        // Input validation for 1-10
+        int choice;
+
+        // Validate user choice
         while (true) {
-            System.out.print("\nEnter your choice (1-10): ");
+            System.out.print("\nEnter your choice (1–10): ");
             if (sc.hasNextInt()) {
                 choice = sc.nextInt();
                 sc.nextLine();
-
                 if (choice >= 1 && choice <= 10) break;
             }
-            System.out.println("Invalid input. Please enter a number from 1 to 10 only.");
+            System.out.print("Error: Enter a number between (1) and (10).");
             sc.nextLine();
         }
 
-        // ✔ Require EXACTLY 3 sentences
-        String text;
+        // Get EXACTLY 3 sentences
+        String input;
         while (true) {
-            System.out.println("\nEnter your text (must contain exactly 3 sentences):");
-            text = sc.nextLine();
+            System.out.print("\nEnter text (must contain exactly 3 sentences):");
+            input = sc.nextLine();
+            if (countSentences(input) == 3) break;
+            System.out.println("Error: Enter EXACTLY 3 sentences.");
+        }
 
-            if (countSentences(text) == 3) {
+        mToolkit tool;
+
+        // POLYMORPHISM: each of these returns a different subclass
+        switch (choice) {
+            case 1: tool = new ReverseTool(input); break;
+            case 2: tool = new PalindromeTool(input); break;
+            case 3:
+                System.out.print("Enter second string: ");
+                String second = sc.nextLine();
+                tool = new AnagramTool(input, second);
                 break;
-            } else {
-                System.out.println("Invalid input. Please enter exactly 3 sentences.");
-            }
+            case 4: tool = new WordCountTool(input); break;
+            case 5: tool = new CharCountTool(input); break;
+            case 6:
+                System.out.print("Enter substring: ");
+                String sub = sc.nextLine();
+                tool = new SubstringTool(input, sub);
+                break;
+            case 7: tool = new LowerTool(input); break;
+            case 8: tool = new UpperTool(input); break;
+            case 9: tool = new VowelTool(input); break;
+            case 10: tool = new ConsonantTool(input); break;
+            default: return;
         }
 
         System.out.println("\n=== RESULT ===");
-
-        switch (choice) {
-            case 1:
-                System.out.println(reverseString(text));
-                break;
-
-            case 2:
-                System.out.println(isPalindrome(text) ? "Palindrome" : "Not a palindrome");
-                break;
-
-            case 3:
-                System.out.print("Enter second string to compare: ");
-                String second = sc.nextLine();
-                System.out.println(isAnagram(text, second) ? "Anagram" : "Not an anagram");
-                break;
-
-            case 4:
-                System.out.println("Word count: " + wordCount(text));
-                break;
-
-            case 5:
-                System.out.println("Character count (no spaces): " + charCount(text));
-                break;
-
-            case 6:
-                System.out.print("Enter substring to search for: ");
-                String sub = sc.nextLine();
-                List<Integer> positions = findSubstring(text, sub);
-
-                if (positions.isEmpty()) {
-                    System.out.println("Substring not found.");
-                } else {
-                    System.out.println("Found at positions: " + positions);
-                }
-                break;
-
-            case 7:
-                System.out.println(toLower(text));
-                break;
-
-            case 8:
-                System.out.println(toUpper(text));
-                break;
-
-            case 9:
-                System.out.println(removeVowels(text));
-                break;
-
-            case 10:
-                System.out.println(removeConsonants(text));
-                break;
-        }
+        tool.process(); // POLYMORPHISM EXECUTES HERE
 
         sc.close();
     }
