@@ -11,7 +11,7 @@ abstract class mToolkit {
     public abstract void process();
 }
 
-record Toolkit(String input) {
+record Toolkit(String input) { // record for efficiency
 
     public String reverse() {
 
@@ -236,7 +236,7 @@ public class mp3 {
             default: return;
         }
 
-        tool.process(); //
+        tool.process(); // calls methods
 
         sc.close();
     }
