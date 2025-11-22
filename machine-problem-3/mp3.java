@@ -8,7 +8,7 @@ abstract class mToolkit {
         this.input = input;
     }
 
-    public abstract void process(); // ABSTRACT method (Abstraction)
+    public abstract void process();
 }
 
 record Toolkit(String input) {
@@ -19,7 +19,7 @@ record Toolkit(String input) {
     }
 
     public boolean isPalindrome() {
-        String norm = input.replaceAll("\\s+", "").toLowerCase();
+        String norm = input.replaceAll("\\s+", "").toLowerCase(); // \\s+ for cleaning/normalizing input
         return norm.equals(new StringBuilder(norm).reverse().toString());
     }
 
@@ -164,9 +164,7 @@ class ConsonantTool extends mToolkit {
 }
 
 
-// ===============================================
-// MAIN PROGRAM
-// ===============================================
+// main
 public class mp3 {
 
     public static int countSentences(String input) {
@@ -181,7 +179,7 @@ public class mp3 {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("=== STRING MANIPULATION Toolkit ===");
+        System.out.println("----STRING MANIPULATION TOOLKIT----");
         System.out.println("1. Reverse String");
         System.out.println("2. Palindrome Checker");
         System.out.println("3. Anagram Checker");
