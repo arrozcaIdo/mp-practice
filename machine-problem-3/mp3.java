@@ -19,8 +19,8 @@ record Toolkit(String input) {
     }
 
     public boolean isPalindrome() {
-        String norm = input.replaceAll("\\s+", "").toLowerCase(); // \\s+ for cleaning/normalizing input
-        return norm.equals(new StringBuilder(norm).reverse().toString());
+        String norm = input.replaceAll("\\s+", "").toLowerCase(); // cleaning/normalizing input
+        return norm.equals(new StringBuilder(norm).reverse().toString()); //sbuilder for
     }
 
     public static boolean isAnagram(String a, String b) {
@@ -205,7 +205,6 @@ public class mp3 {
             sc.nextLine();
         }
 
-        // Get EXACTLY 3 sentences
         String input;
         while (true) {
             System.out.print("\nEnter text (must contain exactly 3 sentences):");
@@ -216,7 +215,6 @@ public class mp3 {
 
         mToolkit tool;
 
-        // POLYMORPHISM: each of these returns a different subclass
         switch (choice) {
             case 1: tool = new ReverseTool(input); break;
             case 2: tool = new PalindromeTool(input); break;
@@ -240,7 +238,7 @@ public class mp3 {
         }
 
         System.out.println("\n=== RESULT ===");
-        tool.process(); // POLYMORPHISM EXECUTES HERE
+        tool.process();
 
         sc.close();
     }
