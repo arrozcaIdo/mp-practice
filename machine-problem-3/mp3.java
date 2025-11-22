@@ -109,7 +109,7 @@ class WordCountTool extends mToolkit {
 class CharCountTool extends mToolkit {
     public CharCountTool(String input) { super(input); }
     public void process() {
-        System.out.println("Character count (no spaces): " + input.replace(" ", "").length());
+        System.out.println("Character count (spaces omitted): " + input.replace(" ", "").length());
     }
 }
 
@@ -163,7 +163,6 @@ class ConsonantTool extends mToolkit {
     }
 }
 
-
 // main
 public class mp3 {
 
@@ -213,7 +212,7 @@ public class mp3 {
             System.out.println("Error: Enter EXACTLY 3 sentences.");
         }
 
-        mToolkit tool;
+        mToolkit tool; //
 
         switch (choice) {
             case 1: tool = new ReverseTool(input); break;
@@ -237,8 +236,7 @@ public class mp3 {
             default: return;
         }
 
-        System.out.println("\n=== RESULT ===");
-        tool.process();
+        tool.process(); //
 
         sc.close();
     }
