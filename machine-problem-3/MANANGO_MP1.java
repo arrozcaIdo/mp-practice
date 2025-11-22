@@ -17,11 +17,12 @@ record Toolkit(String input) { // record for efficiency
         return new StringBuilder(input).reverse().toString();
     }
 
+    // a man. a plan. a canal: panama!
     public boolean isPalindrome() {
-        String norm = input.replaceAll("\\s+", "").toLowerCase(); // cleaning/normalizing input
+        String norm = input.replaceAll("[^\\p{Alnum}]", "").toLowerCase();
         return norm.equals(new StringBuilder(norm).reverse().toString());
     }
-
+    
     public static boolean isAnagram(String a, String b) {
         char[] arr1 = a.replaceAll("\\s+", "").toLowerCase().toCharArray();
         char[] arr2 = b.replaceAll("\\s+", "").toLowerCase().toCharArray();
