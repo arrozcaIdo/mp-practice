@@ -1,5 +1,11 @@
 import java.util.*;
 
+/*
+ A number is Kaprekar if the
+square of the number can be split into two parts that add up to the original number.
+For example, 45² = 2025 → 20 + 25 = 45.
+ */
+
 public class Item5 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
