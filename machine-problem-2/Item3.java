@@ -23,6 +23,6 @@ public class Item3 {
             temp /= 10;
         }
 
-        System.out.println(sum == n ? "STRONG NUMBER!" : "not a strong number.");
+        System.out.println(sum == n ? "[" + n + "] is a STRONG NUMBER!" : "[" + n + "] is NOT a strong number.");
     }
 }
