@@ -6,10 +6,21 @@ appears. Display the frequency of each element.
  */
 
 public class Item15 {
-    public static void main(String[] args){
-        System.out.println("This is a test.");
-        for(int i = 0; i < 10; i++){
-            System.out.println(i);
-        }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter n: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+        System.out.println("Enter elements:");
+        for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
+
+        Map<Integer, Integer> freq = new LinkedHashMap<>();
+        for (int x : arr)
+            freq.put(x, freq.getOrDefault(x, 0) + 1);
+
+        System.out.println("Frequencies:");
+        for (var e : freq.entrySet())
+            System.out.println(e.getKey() + " = " + e.getValue());
     }
 }
