@@ -6,8 +6,6 @@ public class mp1_collatz {
 
         Scanner scanner = new Scanner(System.in);
 
-
-
        /* int num = 12;
 
         int a = 15;
