@@ -3,7 +3,6 @@ public class Item4 {
         System.out.println("This is a test.");
         for(int i = 0; i < 10; i++){
             System.out.println(i);
-
         }
     }
 }
