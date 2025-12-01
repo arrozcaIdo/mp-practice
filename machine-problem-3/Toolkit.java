@@ -168,7 +168,7 @@ class ConsonantTool extends mToolkit {
 
 
 // main
-public class MANANGO_MP1 {
+public class Toolkit {
     public static int countSentences(String input) {
         int count = 0;
         for (char c : input.toCharArray()) {
