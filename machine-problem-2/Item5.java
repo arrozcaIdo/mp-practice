@@ -27,6 +27,6 @@ public class Item5 {
             }
         }
 
-        System.out.println(isKaprekar ? "Kaprekar Number!" : "NOT a Kaprekar number.");
+        System.out.println(isKaprekar ? "[" + n + "] is a KAPREKAR Number!" : "[" + n + "] is NOT a kaprekar number.");
     }
 }
