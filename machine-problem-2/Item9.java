@@ -6,10 +6,14 @@ without using built-in reverse functions.
  */
 
 public class Item9 {
-    public static void main(String[] args){
-        System.out.println("This is a test.");
-        for(int i = 0; i < 10; i++){
-            System.out.println(i);
-        }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String s = sc.nextLine();
+
+        char[] arr = s.toCharArray();
+        System.out.print("Reversed: ");
+        for (int i = arr.length - 1; i >= 0; i--)
+            System.out.print(arr[i]);
     }
 }
