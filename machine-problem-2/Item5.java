@@ -1,6 +1,6 @@
 import java.util.*;
 
-/*
+/* kaprekar-number
  A number is Kaprekar if the
 square of the number can be split into two parts that add up to the original number.
 For example, 45² = 2025 → 20 + 25 = 45.
