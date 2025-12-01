@@ -1,4 +1,5 @@
 import java.util.*;
+
 /* strong-number
 A Strong Number is one
 where the sum of the factorial of its digits equals the number itself (e.g., 145 because 1! + 4! + 5!
