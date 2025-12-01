@@ -27,6 +27,6 @@ public class Item4 {
                 fast = sumofSquares(sumofSquares(fast));
             } while (slow != fast);
 
-            System.out.println(slow == 1 ? "Happy Number!" : "NOT a happy number.");
+            System.out.println(slow == 1 ? "[" + n + "] is a Happy Number!" : "[" + n + "] is NOT a happy number.");
     }
 }
