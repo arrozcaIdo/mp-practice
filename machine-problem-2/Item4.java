@@ -1,4 +1,9 @@
 import java.util.*;
+/*
+A Happy Number is a number that
+eventually reaches 1 when repeatedly replaced by the sum of the squares
+of its digits. If it loops endlessly, it is not a Happy Number.
+ */
 
 public class Item4 {
         static int sumofSquares(int n){
@@ -10,6 +15,7 @@ public class Item4 {
             }
             return sum;
         }
+
         public static void main(String[] args){
             Scanner sc = new Scanner(System.in);
             System.out.print("Enter a number: ");
