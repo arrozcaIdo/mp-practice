@@ -168,7 +168,7 @@ class ConsonantTool extends mToolkit {
 
 
 // main
-public class Toolkit {
+public class StringToolkit {
     public static int countSentences(String input) {
         int count = 0;
         for (char c : input.toCharArray()) {
