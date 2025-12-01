@@ -1,4 +1,5 @@
 import java.util.*;
+
 /* happy-number
 A Happy Number is a number that
 eventually reaches 1 when repeatedly replaced by the sum of the squares
